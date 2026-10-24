@@ -1,0 +1,27 @@
+{
+  "name": "coco-de-guide",
+  "version": "1.0.0",
+  "description": "dbt data engineering workflow for the TPC-H transformation project",
+  "author": {
+    "name": "Jay Fay",
+    "email": "jefay@mail.bradley.edu"
+  },
+  "skills": "./skills",
+  "agents": "./agents",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash .cortex/plugins/coco-de-guide/hooks/validate-bash.sh",
+            "timeout": 10,
+            "enabled": true,
+            "statusMessage": "Checking for production dbt commands..."
+          }
+        ]
+      }
+    ]
+  }
+}
